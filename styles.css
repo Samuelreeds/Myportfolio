@@ -1,13 +1,23 @@
 :root {
+    --bg-color: #0A0A0A;
+    --surface-color: #111111;
+    --text-color: #ffffff;
+    --text-muted: #adb5bd;
+    --accent-color: #ff0000; /* Playful Amethyst Purple */
+    --border-color: #222222;
+    --nav-bg-scrolled: rgba(10, 10, 10, 0.95);
+}
+
+body.light-mode {
     --bg-color: #F8F9FA;
     --surface-color: #ffffff;
     --text-color: #212529;
     --text-muted: #6c757d;
-    --accent-color: #ff0000;
     --border-color: #dee2e6;
     --nav-bg-scrolled: rgba(248, 249, 250, 0.95);
 }
 
+/* Fix for muted text contrast */
 .text-muted {
     color: var(--text-muted) !important;
     opacity: 1 !important;
@@ -48,24 +58,24 @@ section {
     margin-bottom: 1rem;
 }
 
+/* Navbar */
 .navbar {
     padding: 20px 0;
     transition: all 0.3s ease-in-out;
 }
-
 .navbar.scrolled {
     background-color: var(--nav-bg-scrolled) !important;
     padding: 10px 0;
     border-bottom: 1px solid var(--border-color);
     backdrop-filter: blur(10px);
 }
-
 .navbar-brand {
     letter-spacing: 2px;
     color: var(--text-color) !important;
     font-size: 1.5rem;
 }
 
+/* Navbar Links */
 #navbarNav .nav-link {
     color: var(--text-color);
     font-family: 'Poppins', sans-serif;
@@ -76,7 +86,6 @@ section {
     padding: 10px 20px;
     transition: color 0.3s;
 }
-
 #navbarNav .nav-link:hover {
     color: var(--accent-color);
 }
@@ -91,6 +100,19 @@ section {
     }
 }
 
+.theme-toggle-btn {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color 0.3s;
+}
+.theme-toggle-btn:hover {
+    color: var(--accent-color);
+}
+
+/* Buttons */
 .btn-custom {
     background-color: transparent;
     color: var(--text-color);
@@ -104,36 +126,34 @@ section {
     letter-spacing: 1px;
     font-size: 0.9rem;
 }
-
 .btn-custom:hover {
     border-color: var(--accent-color);
     background-color: var(--accent-color);
     color: #fff;
 }
-
 .btn-accent {
     background-color: var(--accent-color);
     color: #fff;
     border: 1px solid var(--accent-color);
 }
-
 .btn-accent:hover {
     background-color: transparent;
     color: var(--accent-color);
 }
 
+/* Hero */
 #hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding-top: 80px;
 }
-
 .hero-title {
     font-size: clamp(3rem, 8vw, 6rem);
     line-height: 1.1;
 }
 
+/* About Section - Upgraded Styles */
 .about-skills {
     display: flex;
     flex-wrap: wrap;
@@ -150,7 +170,6 @@ section {
     font-weight: 600;
     transition: all 0.3s ease;
 }
-
 .skill-pill:hover {
     border-color: var(--accent-color);
     color: var(--accent-color);
@@ -164,27 +183,32 @@ section {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
+body:not(.light-mode) .fun-fact-callout {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
 .fun-fact-callout h4 {
     color: var(--accent-color);
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
 
+/* Points to white-backed, bordered profile card (target layout) */
 .profile-photo-card {
-    background-color: #ffffff; 
+    background-color: #ffffff; /* Explicit white background to match white-on-white card target */
     border: 1px solid #dee2e6;
     border-radius: 12px;
-    max-width: 400px; 
+    max-width: 400px; /* Constrains card size nicely on desktop */
 }
 
 .profile-photo-card img {
-    max-height: 450px; 
+    max-height: 450px; /* Constrains picture height in card */
     object-fit: cover;
     width: 100%;
 }
 
 .profile-photo-card h3 {
-    color: #212529; 
+    color: #212529; /* Dark text on white card */
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
@@ -192,10 +216,11 @@ section {
 
 @media (max-width: 991.98px) {
     #about .row {
-        flex-direction: column-reverse; 
+        flex-direction: column-reverse; /* Reverses order on mobile: photo stacks above text */
     }
 }
 
+/* Cards & Features */
 .service-card, .project-card {
     background-color: var(--surface-color);
     border: 1px solid var(--border-color);
@@ -206,12 +231,10 @@ section {
     text-decoration: none;
     color: var(--text-color);
 }
-
 .service-card:hover {
     border-color: var(--accent-color);
     transform: translateY(-5px);
 }
-
 .project-card:hover {
     transform: scale(1.02);
     border-color: var(--accent-color);
@@ -230,7 +253,6 @@ section {
     transition: color 0.3s ease;
     border: 1px solid var(--border-color);
 }
-
 .project-card:hover .project-img-placeholder {
     color: var(--accent-color);
 }
@@ -246,7 +268,6 @@ section {
     margin-top: 15px;
     transition: color 0.3s;
 }
-
 .project-card:hover .learn-more {
     color: var(--accent-color);
 }
@@ -257,13 +278,13 @@ ul.custom-list {
     color: var(--text-muted);
     font-size: 0.9rem;
 }
-
 ul.custom-list li {
     margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
 }
 
+/* Forms */
 .form-control {
     background-color: var(--surface-color);
     border: 1px solid var(--border-color);
@@ -271,18 +292,17 @@ ul.custom-list li {
     border-radius: 0;
     padding: 12px 15px;
 }
-
 .form-control:focus {
     background-color: var(--surface-color);
     color: var(--text-color);
     border-color: var(--accent-color);
     box-shadow: none;
 }
-
 .form-control::placeholder {
     color: var(--text-muted);
 }
 
+/* Client Logos & Footer */
 .client-logos {
     font-size: 2rem;
     color: var(--text-muted);
@@ -293,12 +313,10 @@ ul.custom-list li {
     margin: 40px 0;
     opacity: 0.5;
 }
-
 .contact-icon {
     color: var(--accent-color);
     margin-right: 10px;
 }
-
 footer {
     padding: 30px 0;
     font-size: 0.85rem;
@@ -307,13 +325,13 @@ footer {
     background-color: var(--bg-color);
 }
 
+/* Scroll Animations */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     will-change: opacity, transform;
 }
-
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
